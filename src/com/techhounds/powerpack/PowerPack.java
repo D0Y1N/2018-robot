@@ -30,7 +30,7 @@ public class PowerPack extends Subsystem implements DashboardUpdatable {
 	private WPI_TalonSRX winchQuaternary;
 
 	public static final int PID_TOLERANCE = 5000;
-	public static final double PEAK_ELEVATOR_FWD = 10;
+	public static final double PEAK_ELEVATOR_FWD = 1.0;
 	public static final double PEAK_ELEVATOR_REV = -0.45;
 	public static final double MIN_ELEVATOR_FWD = 0.2;
 	public static final double MIN_ELEVATOR_REV = -0.15;
