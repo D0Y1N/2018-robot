@@ -4,21 +4,30 @@ import com.techhounds.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveStraight extends Command {
+/**
+ * TODO: add TalonPID-based distance command
+ */
+public class DriveStraightRamp extends Command {
 	
-	private final double targetPower;
-	private double initialDistance;
-	private final double targetDistance;
+	private final double startPower;
+	private final double endPower;
 	private double initialAngle;
+	private double initialDistance;
+	private double targetDistance;
 	
-	public DriveStraight(double inches) {
-		this(inches, inches > 0 ? 0.6 : -0.6);
-	}
-
-    public DriveStraight(double inches, double power) {
+	/**
+	 * Drives straight with gyro correction, and linearly ramps output power
+	 * from start to end over distance.
+	 * 
+	 * @param inches
+	 * @param startPower
+	 * @param endPower
+	 */
+    public DriveStraightRamp(double inches, double startPower, double endPower) {
     	requires(Robot.drivetrain);
+    	this.startPower = startPower;
+    	this.endPower = endPower;
     	this.targetDistance = inches;
-    	this.targetPower = power;
     }
 
     protected void initialize() {
@@ -27,14 +36,17 @@ public class DriveStraight extends Command {
     }
 
     protected void execute() {
-    	double setRight = targetPower;
-    	double setLeft = targetPower;
+    	double rampValue = (Robot.drivetrain.getScaledAverageDistance() - initialDistance) / targetDistance;
+    	double powerRamp = startPower + (rampValue * (endPower - startPower));
+    	
+    	double setRight = powerRamp;
+    	double setLeft = powerRamp;
     	
     	double angleError = Robot.gyro.getRotation() - initialAngle;
     	double angleP = (angleError / 50);
     	
     	// fix for driving backwards
-    	if (targetPower < 0) {
+    	if (startPower < 0 && endPower < 0) {
     		angleP *= -1;
     	}
     	
