@@ -2,16 +2,16 @@ package com.techhounds.auton;
 
 import com.techhounds.auton.FieldState.Position;
 import com.techhounds.auton.paths.Baseline;
-import com.techhounds.auton.paths.CenterLeftSwitchDouble;
-import com.techhounds.auton.paths.CenterRightSwitchDouble;
+import com.techhounds.auton.paths.CenterLeftSwitch;
+import com.techhounds.auton.paths.CenterRightSwitch;
 import com.techhounds.auton.paths.LeftCross;
 import com.techhounds.auton.paths.LeftScaleCross;
-import com.techhounds.auton.paths.LeftScaleScale;
+import com.techhounds.auton.paths.LeftScale;
 import com.techhounds.auton.paths.LeftScaleSide;
 import com.techhounds.auton.paths.LeftSwitch;
 import com.techhounds.auton.paths.RightCross;
 import com.techhounds.auton.paths.RightScaleCross;
-import com.techhounds.auton.paths.RightScaleScale;
+import com.techhounds.auton.paths.RightScale;
 import com.techhounds.auton.paths.RightScaleSide;
 import com.techhounds.auton.paths.RightSwitch;
 
@@ -107,10 +107,10 @@ public class AutonLauncher {
 	public static Command getSwitch(FieldState field) {
 		if (field.getRobotPosition() == Position.Middle) {
 			if (field.getSwitchPosition() == Position.Right) {
-				return new CenterRightSwitchDouble();
+				return new CenterRightSwitch();
 //				return new CenterRightSwitch();
 			} else if (field.getSwitchPosition() == Position.Left) {
-				return new CenterLeftSwitchDouble();
+				return new CenterLeftSwitch();
 //				return new CenterLeftSwitch();
 			} else {
 				return getBaseline();
@@ -128,7 +128,7 @@ public class AutonLauncher {
 	public static Command getAnyScale(FieldState field) {
 		if (field.getRobotPosition() == Position.Right) {
 			if (field.getScalePosition() == Position.Right) {
-				return new RightScaleScale();
+				return new RightScale();
 			} else if (field.getScalePosition() == Position.Left) {
 				return new LeftScaleCross();
 			} else {
@@ -138,7 +138,7 @@ public class AutonLauncher {
 			if (field.getScalePosition() == Position.Right) {
 				return new RightScaleCross();
 			} else if (field.getScalePosition() == Position.Left) {
-				return new LeftScaleScale();
+				return new LeftScale();
 			} else {
 				return getBaseline();
 			}
