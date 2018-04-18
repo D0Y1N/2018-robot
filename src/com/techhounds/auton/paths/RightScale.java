@@ -43,15 +43,19 @@ public class RightScale extends CommandGroup {
     	addParallel(new SetElevatorPosition(ElevatorPosition.COLLECT));
     	
     	// grab second cube
-    	addSequential(new DriveStraight(30, 0.4), 3);
+    	addSequential(new DriveStraight(30, 0.35), 3);
 //    	addSequential(new DriveArc(50, 60, 0.4, 0.5), 2);
-    	addSequential(new CollectCube(45), 3);
+    	addSequential(new CollectCube(25), 3);
 //    	
 //		// retry collection
 //		addSequential(new CollectCubeRetryConditional());
 //		addSequential(new CollectCubeRetryConditional());
 //		addSequential(new CollectCubeRetryConditional());
 //
+    	addSequential(new TurnToAngleGyro(-170), 1);
+    	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE));
+    	addSequential(new DriveStraight(-50, -0.4), 2);
+    	
 //    	// drive back to scale
 //    	addSequential(new TurnToAngleGyro(135), 1);
 //    	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE));
