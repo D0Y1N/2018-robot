@@ -3,9 +3,10 @@ package com.techhounds;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.techhounds.auton.paths.LeftScaleTriple;
 import com.techhounds.compressor.ToggleCompressor;
+import com.techhounds.vision.RotateUsingDriverVision;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -16,8 +17,6 @@ public class Dashboard {
 	
 	private static List<DashboardUpdatable> subsystems = new ArrayList<DashboardUpdatable>();
 	private static int updateCounts = 0;
-	
-	private static Timer updateTimer = new Timer();
 	
 	public static void clearDashboard() {
 		for(String key : SmartDashboard.getKeys()) {
@@ -42,22 +41,19 @@ public class Dashboard {
 		}
 		
 		SmartDashboard.putData("Toggle Compressor", new ToggleCompressor());
-		
-		updateTimer.start();
+		SmartDashboard.putData("Track Cube", new RotateUsingDriverVision());
+		SmartDashboard.putData("Triple Left Scale", new LeftScaleTriple());
 	}
 	
 	public static void updateDashboard() {
-		if (updateTimer.hasPeriodPassed(0.25)) {
-		
-			for (DashboardUpdatable subsystem : subsystems) {
-				subsystem.updateSD();
-			}
-			
-			SmartDashboard.putNumber("Dashboard Update Counts", updateCounts++);
-			SmartDashboard.putNumber("PDP Voltage", Robot.pdp.getVoltage());
-			SmartDashboard.putNumber("Total Current Draw", Robot.pdp.getTotalCurrent());
-			SmartDashboard.putNumber("3.3v", Robot.analog.getVoltage());
+		for (DashboardUpdatable subsystem : subsystems) {
+			subsystem.updateSD();
 		}
+		
+		SmartDashboard.putNumber("Dashboard Update Counts", updateCounts++);
+		SmartDashboard.putNumber("PDP Voltage", Robot.pdp.getVoltage());
+		SmartDashboard.putNumber("Total Current Draw", Robot.pdp.getTotalCurrent());
+		SmartDashboard.putNumber("3.3v", Robot.analog.getVoltage());
 	}
 	
 	public interface DashboardUpdatable {

@@ -4,15 +4,11 @@ import com.techhounds.auton.FieldState.Position;
 import com.techhounds.auton.paths.Baseline;
 import com.techhounds.auton.paths.CenterLeftSwitchDouble;
 import com.techhounds.auton.paths.CenterRightSwitchDouble;
-import com.techhounds.auton.paths.LeftCross;
 import com.techhounds.auton.paths.LeftScaleCross;
 import com.techhounds.auton.paths.LeftScaleScale;
-import com.techhounds.auton.paths.LeftScaleSide;
 import com.techhounds.auton.paths.LeftSwitch;
-import com.techhounds.auton.paths.RightCross;
 import com.techhounds.auton.paths.RightScaleCross;
 import com.techhounds.auton.paths.RightScaleScale;
-import com.techhounds.auton.paths.RightScaleSide;
 import com.techhounds.auton.paths.RightSwitch;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -31,7 +27,6 @@ public class AutonLauncher {
 		SCALE,
 		SWITCH,
 		BASELINE,
-		SCALE_SIDE
 	}
 
 	public static final SendableChooser<Objective> firstPriority = new SendableChooser<>();
@@ -40,8 +35,7 @@ public class AutonLauncher {
 	public static void addChoices() {
 		firstPriority.addDefault("Baseline", Objective.BASELINE);
 		firstPriority.addObject("Switch", Objective.SWITCH);
-		firstPriority.addObject("Scale (Double)", Objective.SCALE);
-		firstPriority.addObject("Scale (Single/Assist)", Objective.SCALE_SIDE);
+		firstPriority.addObject("Scale", Objective.SCALE);
 		SmartDashboard.putData("First Cube Priority", firstPriority);
 
 		enableCross.addDefault("Enable Cross", new Boolean(true));
@@ -61,12 +55,6 @@ public class AutonLauncher {
 			} else {
 				return getAheadScale(field);
 			}
-		case SCALE_SIDE:
-			if (enableCross.getSelected()) {
-				return getAssistScale(field);
-			} else {
-				return getSideScale(field);
-			}
 		default:
 			return getBaseline();
 		}
@@ -74,34 +62,6 @@ public class AutonLauncher {
 
 	public static Command getBaseline() {
 		return new Baseline();
-	}
-	
-	public static Command getSideScale(FieldState field) {
-		if (field.getRobotPosition() == Position.Right && field.getScalePosition() == Position.Right) {
-			return new RightScaleSide();
-		} else if (field.getRobotPosition() == Position.Left && field.getScalePosition() == Position.Left) {
-			return new LeftScaleSide();
-		} else {
-			return getSwitch(field);
-		}
-	}
-	
-	public static Command getAssistScale(FieldState field) {
-		if (field.getRobotPosition() == Position.Right) {
-			if (field.getScalePosition() == Position.Right) {
-				return new RightScaleSide();
-			} else {
-				return new LeftCross();
-			}
-		} else if (field.getRobotPosition() == Position.Left) {
-			if (field.getScalePosition() == Position.Left) {
-				return new LeftScaleSide();
-			} else {
-				return new RightCross();
-			}
-		} else {
-			return getBaseline();
-		}
 	}
 
 	public static Command getSwitch(FieldState field) {

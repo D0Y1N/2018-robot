@@ -57,12 +57,15 @@ public class RotateUsingDriverVision extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	SmartDashboard.putData("Vision Rotation PID", ctrl);
-    	ctrl.setSetpoint(setAngle);
+    	setAngle = vis.getTurnAngle();
+    	ctrl.setSetpoint(setAngle + Robot.gyro.getRotation());
     	ctrl.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	setAngle = vis.getTurnAngle();
+    	ctrl.setSetpoint(setAngle + Robot.gyro.getRotation());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -78,5 +81,6 @@ public class RotateUsingDriverVision extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

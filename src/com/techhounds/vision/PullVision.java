@@ -16,7 +16,7 @@ public class PullVision extends Subsystem {
     }
     
     public double getTurnAngle() {
-    	return SmartDashboard.getNumber("AwayAngle", 0);
+    	return SmartDashboard.getNumber("RobotAngle", 0);
     }
 
     public void initDefaultCommand() {

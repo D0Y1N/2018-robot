@@ -8,12 +8,13 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.techhounds.Dashboard.DashboardUpdatable;
 import com.techhounds.RobotMap;
 import com.techhounds.RobotUtilities;
+import com.techhounds.Dashboard.DashboardUpdatable;
 import com.techhounds.auton.profiling.MotionProfileUploader;
 import com.techhounds.auton.profiling.TrajectoryPointSequence;
 
+import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -50,8 +51,8 @@ public class Drivetrain extends Subsystem implements DashboardUpdatable {
 		rightUploader = new MotionProfileUploader(motorRightMain);
 		leftUploader  = new MotionProfileUploader(motorLeftMain);
 
-//		new Notifier(rightUploader).startPeriodic(0.005);
-//		new Notifier(leftUploader).startPeriodic(0.005);
+		new Notifier(rightUploader).startPeriodic(0.005);
+		new Notifier(leftUploader).startPeriodic(0.005);
 
 		configure(motorRightMain);
 		configure(motorLeftMain);
