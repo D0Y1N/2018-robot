@@ -52,9 +52,12 @@ public class RightScale extends CommandGroup {
 //		addSequential(new CollectCubeRetryConditional());
 //		addSequential(new CollectCubeRetryConditional());
 //
-    	addSequential(new TurnToAngleGyro(-170), 1);
+    	addSequential(new TurnToAngleGyro(-167), 1);
     	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE));
-    	addSequential(new DriveStraight(-50, -0.4), 2);
+    	addSequential(new DriveStraight(-50, -0.35), 2);
+    	addSequential(new TurnToAngleGyro(-15), 1.5);
+    	
+    	addSequential(new SetIntakePower(-0.5), 0.5);
     	
 //    	// drive back to scale
 //    	addSequential(new TurnToAngleGyro(135), 1);
