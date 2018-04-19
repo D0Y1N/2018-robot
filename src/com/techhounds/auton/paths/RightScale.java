@@ -39,11 +39,11 @@ public class RightScale extends CommandGroup {
     	
     	// back off and reset
     	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
+    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.75));
     	addSequential(new TurnToAngleGyro(-170), 2);
-    	addParallel(new SetElevatorPosition(ElevatorPosition.COLLECT)); // TODO drop during gyro w/ 0.75 delay?
     	
     	// grab second cube
-    	addSequential(new DriveStraight(25, 0.35), 3);
+    	addSequential(new DriveStraight(25, 0.30), 3);
 //    	addSequential(new DriveArc(50, 60, 0.4, 0.5), 2);
     	addSequential(new CollectCube(25), 2);
 //    	

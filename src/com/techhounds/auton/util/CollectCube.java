@@ -13,6 +13,6 @@ public class CollectCube extends CommandGroup {
     public CollectCube(double distance) {
     	addParallel(new GrabCube());
     	addParallel(new IntakeUntilDetected());
-    	addSequential(new DriveStraightUntilDetected(distance, 0.35));
+    	addSequential(new DriveStraightUntilDetected(distance, 0.30));
     }
 }
