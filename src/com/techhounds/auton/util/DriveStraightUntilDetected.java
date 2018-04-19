@@ -4,11 +4,6 @@ import com.techhounds.Robot;
 
 public class DriveStraightUntilDetected extends DriveStraight {
 	
-	
-	public DriveStraightUntilDetected(double inches) {
-		super(inches);
-	}
-	
 	public DriveStraightUntilDetected(double inches, double power) {
 		super(inches, power);
 	}

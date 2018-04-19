@@ -13,6 +13,6 @@ public class Baseline extends CommandGroup {
 
     public Baseline() {
     	addParallel(new SetTiltPosition(Tilt.POS_UP));
-    	addSequential(new DriveStraight(100), 3);
+    	addSequential(new DriveStraight(100, 0.5), 3);
     }
 }

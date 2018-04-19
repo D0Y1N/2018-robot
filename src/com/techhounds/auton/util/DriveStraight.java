@@ -11,10 +11,6 @@ public class DriveStraight extends Command {
 	private final double targetDistance;
 	private double initialAngle;
 	
-	public DriveStraight(double inches) {
-		this(inches, inches > 0 ? 0.6 : -0.6);
-	}
-
     public DriveStraight(double inches, double power) {
     	requires(Robot.drivetrain);
     	this.targetDistance = inches;
