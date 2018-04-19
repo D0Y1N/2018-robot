@@ -6,10 +6,10 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveStraight extends Command {
 	
-	private final double targetPower;
-	private double initialDistance;
-	private final double targetDistance;
-	private double initialAngle;
+	protected double targetPower;
+	protected double initialDistance;
+	protected final double targetDistance;
+	protected double initialAngle;
 	
     public DriveStraight(double inches, double power) {
     	requires(Robot.drivetrain);
