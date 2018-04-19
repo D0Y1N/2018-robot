@@ -25,13 +25,13 @@ public class RightScale extends CommandGroup {
     	
        	// Set tilt/elevator
     	addParallel(new SetTiltPosition(TiltPosition.DOWN));    	
-    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.SCALE), 1));
+    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.SCALE), 1.5)); //wait a little longer?
 
     	// drive up & curve
     	addSequential(new DriveStraightRamp(40, 0.3, 1));
     	addSequential(new DriveArc(90, 80, 1, 0.9));
-    	addSequential(new DriveStraight(40, 1));
-    	addSequential(new DriveStraightRamp(100, 1, 0));
+    	addSequential(new DriveStraight(60, 1));
+    	addSequential(new DriveStraightRamp(80, 1, 0));
     	
     	// eject the cube
     	addParallel(new SetTiltPosition(TiltPosition.MIDDLE));
@@ -40,12 +40,12 @@ public class RightScale extends CommandGroup {
     	// back off and reset
     	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
     	addSequential(new TurnToAngleGyro(-170), 2);
-    	addParallel(new SetElevatorPosition(ElevatorPosition.COLLECT));
+    	addParallel(new SetElevatorPosition(ElevatorPosition.COLLECT)); // TODO drop during gyro w/ 0.75 delay?
     	
     	// grab second cube
-    	addSequential(new DriveStraight(30, 0.35), 3);
+    	addSequential(new DriveStraight(25, 0.35), 3);
 //    	addSequential(new DriveArc(50, 60, 0.4, 0.5), 2);
-    	addSequential(new CollectCube(25), 3);
+    	addSequential(new CollectCube(25), 2);
 //    	
 //		// retry collection
 //		addSequential(new CollectCubeRetryConditional());
@@ -53,9 +53,9 @@ public class RightScale extends CommandGroup {
 //		addSequential(new CollectCubeRetryConditional());
 //
     	addSequential(new TurnToAngleGyro(-167), 1);
-    	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE));
+    	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE)); //wait a little longer?
     	addSequential(new DriveStraight(-50, -0.35), 2);
-    	addSequential(new TurnToAngleGyro(-15), 1.5);
+    	addSequential(new TurnToAngleGyro(-15), 1.5); //lower rotation power here?
     	
     	addSequential(new SetIntakePower(-0.5), 0.5);
     	
