@@ -2,7 +2,6 @@ package com.techhounds.auton.paths;
 
 import com.techhounds.auton.util.CollectCube;
 import com.techhounds.auton.util.DelayedCommand;
-import com.techhounds.auton.util.DriveArc;
 import com.techhounds.auton.util.DriveStraight;
 import com.techhounds.auton.util.DriveStraightRamp;
 import com.techhounds.auton.util.TurnToAngleGyro;
@@ -29,8 +28,8 @@ public class RightScale extends CommandGroup {
 
     	// drive up & curve
     	addSequential(new DriveStraightRamp(40, 0.3, 1));
-    	addSequential(new DriveArc(90, 80, 1, 0.9));
-    	addSequential(new DriveStraight(60, 1));
+//    	addSequential(new DriveStraight(50, 1));
+    	addSequential(new DriveStraight(150, 1, -12), 4);
     	addSequential(new DriveStraightRamp(80, 1, 0));
     	
     	// eject the cube
@@ -44,7 +43,6 @@ public class RightScale extends CommandGroup {
     	
     	// grab second cube
     	addSequential(new DriveStraight(25, 0.30), 3);
-//    	addSequential(new DriveArc(50, 60, 0.4, 0.5), 2);
     	addSequential(new CollectCube(25), 2);
 //    	
 //		// retry collection
@@ -55,7 +53,7 @@ public class RightScale extends CommandGroup {
     	addSequential(new TurnToAngleGyro(-167), 1);
     	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE)); //wait a little longer?
     	addSequential(new DriveStraight(-50, -0.35), 2);
-    	addSequential(new TurnToAngleGyro(-15, 1.5, 0.3)); //lower rotation power here?
+    	addSequential(new TurnToAngleGyro(-15, 2, 0.28)); //lower rotation power here?
     	
     	addSequential(new SetIntakePower(-0.5), 0.5);
     	

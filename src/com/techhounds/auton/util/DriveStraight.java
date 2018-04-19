@@ -10,15 +10,24 @@ public class DriveStraight extends Command {
 	protected double initialDistance;
 	protected final double targetDistance;
 	protected double initialAngle;
+	protected boolean readInitialAngle = false;
 	
-    public DriveStraight(double inches, double power) {
+	public DriveStraight(double inches, double power) {
+		this(inches, power, 0);
+		readInitialAngle = true;
+	}
+	
+    public DriveStraight(double inches, double power, double targetAngle) {
     	requires(Robot.drivetrain);
     	this.targetDistance = inches;
     	this.targetPower = power;
+    	this.initialAngle = targetAngle;
     }
 
     protected void initialize() {
-    	initialAngle = Robot.gyro.getRotation();
+    	if (readInitialAngle) {
+    		initialAngle = Robot.gyro.getRotation();
+    	}
     	initialDistance = Robot.drivetrain.getScaledAverageDistance();
     }
 
