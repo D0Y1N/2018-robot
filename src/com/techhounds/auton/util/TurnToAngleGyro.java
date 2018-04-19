@@ -20,7 +20,7 @@ public class TurnToAngleGyro extends TimedCommand {
 	private final double P = 0.0125, I = 0, D = 0.0125; // TODO: tune
 	private double setAngle;
 	private int c = 0;
-	private final double MAX_POWER = 0.4;
+	private final double MAX_POWER;
 
 	/**
 	 * Rotates the robot by the given angle.
@@ -28,8 +28,9 @@ public class TurnToAngleGyro extends TimedCommand {
 	 * Left is negative, right is positive
 	 * @param angle in degrees
 	 */
-    public TurnToAngleGyro(double deg, double timeout) {
+    public TurnToAngleGyro(double deg, double timeout, double maxPower) {
         super(timeout);
+        MAX_POWER = maxPower;
         motors = Robot.drivetrain;
         requires(motors);
         setAngle = deg;
@@ -60,6 +61,10 @@ public class TurnToAngleGyro extends TimedCommand {
 
     public TurnToAngleGyro(double angle) {
     	this(angle, 3);
+    }
+    
+    public TurnToAngleGyro(double angle, double timeout) {
+    	this(angle, timeout, 0.4);
     }
     
     protected void initialize() {

@@ -55,7 +55,7 @@ public class RightScale extends CommandGroup {
     	addSequential(new TurnToAngleGyro(-167), 1);
     	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE)); //wait a little longer?
     	addSequential(new DriveStraight(-50, -0.35), 2);
-    	addSequential(new TurnToAngleGyro(-15), 1.5); //lower rotation power here?
+    	addSequential(new TurnToAngleGyro(-15, 1.5, 0.3)); //lower rotation power here?
     	
     	addSequential(new SetIntakePower(-0.5), 0.5);
     	
