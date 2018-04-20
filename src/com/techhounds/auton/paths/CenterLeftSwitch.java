@@ -3,6 +3,7 @@ package com.techhounds.auton.paths;
 import com.techhounds.arm.GrabCube;
 import com.techhounds.auton.util.CollectCube;
 import com.techhounds.auton.util.DelayedCommand;
+import com.techhounds.auton.util.DriveAngle;
 import com.techhounds.auton.util.DriveStraight;
 import com.techhounds.auton.util.DriveStraightUntilDetected;
 import com.techhounds.auton.util.TurnToAngleGyro;
@@ -27,8 +28,7 @@ public class CenterLeftSwitch extends CommandGroup {
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.SWITCH), 1.5));
     	
     	// drive up to switch
-    	addSequential(new DriveStraight(6, 0.4), 0.5);
-    	addSequential(new TurnToAngleGyro(-30), 1); //too much?
+    	addSequential(new DriveAngle(-35, 0.4, 0), 1);
     	addSequential(new DriveStraight(65, 0.6), 3);
     	addSequential(new DriveStraight(30, 0.4), 1);
     	addSequential(new TurnToAngleGyro(-10), 0.5);
@@ -39,8 +39,9 @@ public class CenterLeftSwitch extends CommandGroup {
     	// LAST CHECK
     	
     	// back up to starting position
-    	addSequential(new DriveStraight(-10, -0.4), 1);
-    	addSequential(new TurnToAngleGyro(-30), 1);
+//    	addSequential(new DriveStraight(-10, -0.4), 1);
+//    	addSequential(new TurnToAngleGyro(-30), 1);
+    	addSequential(new DriveAngle(-30, 0, -0.4), 1);
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.5));
     	addSequential(new DriveStraight(-55, -0.6), 3);
     	addSequential(new DriveStraight(-20, -0.4), 2);
@@ -53,8 +54,8 @@ public class CenterLeftSwitch extends CommandGroup {
     	addSequential(new DriveStraightUntilDetected(10, 0.3), 0.5);
     	
     	// line up to switch again
-    	addSequential(new WaitCommand(0.5));
-    	addSequential(new TurnToAngleGyro(-70), 1.5);
+//    	addSequential(new WaitCommand(0.5));
+    	addSequential(new TurnToAngleGyro(-70), 1);
     	addSequential(new DriveStraight(50, 0.5), 2);
     	addParallel(new SetElevatorPosition(ElevatorPosition.SWITCH));
     	addSequential(new TurnToAngleGyro(0), 1);
