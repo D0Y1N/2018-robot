@@ -64,8 +64,8 @@ public class CenterLeftSwitch extends CommandGroup {
     	addSequential(new SetIntakePower(-0.5), 0.5);
     	
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.5));
-    	addSequential(new DriveStraight(-22, -0.4), 1);
-    	addSequential(new TurnToAngleGyro(62), 1);
+    	addSequential(new DriveStraight(-26, -0.4), 1);
+    	addSequential(new TurnToAngleGyro(60), 1);
     	addSequential(new CollectCube(35), 2);
     }
 }
