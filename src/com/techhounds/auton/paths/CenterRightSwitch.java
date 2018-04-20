@@ -1,6 +1,7 @@
 package com.techhounds.auton.paths;
 
 import com.techhounds.arm.GrabCube;
+import com.techhounds.auton.util.CollectCube;
 import com.techhounds.auton.util.DelayedCommand;
 import com.techhounds.auton.util.DriveStraight;
 import com.techhounds.auton.util.TurnToAngleGyro;
@@ -57,5 +58,10 @@ public class CenterRightSwitch extends CommandGroup {
     	addSequential(new DriveStraight(12, 0.4), 1);
     	
     	addSequential(new SetIntakePower(-0.5), 0.5);
+    	
+    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.5));
+    	addSequential(new DriveStraight(-22, -0.4), 1);
+    	addSequential(new TurnToAngleGyro(-62), 1);
+    	addSequential(new CollectCube(35), 2);
     }
 }
