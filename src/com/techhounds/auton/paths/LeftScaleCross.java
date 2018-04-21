@@ -30,15 +30,13 @@ public class LeftScaleCross extends CommandGroup {
     	addSequential(new DriveStraightRamp(30, 1, 0.5, 0));
 //    	addSequential(new TurnToAngleGyro(-85), 3);
     	addSequential(new DriveAngle(-75, 0.6, 0.2));
-    	addParallel(new DelayedCommand(new SetTiltPosition(Tilt.POS_MID), 1));
-    	addSequential(new DriveStraight(195, 0.6, -90)); // TODO ramping speedup
+    	addParallel(new DelayedCommand(new SetTiltPosition(Tilt.POS_MID), 0.5));
+//    	addSequential(new DriveStraight(195, 0.6, -90)); // TODO ramping speedup
     	
-    	/*
     	addSequential(new DriveStraightRamp(45, 0.6, 1, -90));
     	addSequential(new DriveStraightRamp(45, 1, 0.5, -90));
     	addSequential(new DriveStraightRamp(50, 0.5, 1, -90));
     	addSequential(new DriveStraightRamp(50, 1, 0.3, -90));
-    	 */
     	
     	// put in scale
     	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE));
