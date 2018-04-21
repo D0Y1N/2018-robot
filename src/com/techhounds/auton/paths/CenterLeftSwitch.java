@@ -40,8 +40,8 @@ public class CenterLeftSwitch extends CommandGroup {
     	// back up to starting position
     	addSequential(new DriveAngle(-35, 0, -0.4), 1);
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.5));
-    	addSequential(new DriveStraightRamp(-30, -0.4, -1, -30));
-    	addSequential(new DriveStraightRamp(-45, -1, -0.2, -30));
+    	addSequential(new DriveStraightRamp(-30, -0.4, -1, -35));
+    	addSequential(new DriveStraightRamp(-45, -1, -0.2, -35));
     	
     	// grab another one
     	addSequential(new TurnToAngleGyro(0), 1.5); //TODO reduce timeout?
@@ -56,21 +56,21 @@ public class CenterLeftSwitch extends CommandGroup {
     	addParallel(new SetElevatorPosition(ElevatorPosition.SWITCH));
     	addSequential(new DriveAngle(0, 0, 0.4));
     	
-    	// place second cube
-    	addSequential(new SetIntakePower(-0.5), 0.5);
-    	
-    	// line up for third
-    	addSequential(new DriveAngle(-30, 0, -0.4), 1);
-    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.5));
-    	addSequential(new DriveStraightRamp(-30, -0.4, -1, -30));
-    	addSequential(new DriveStraightRamp(-45, -1, -0.2, -30));
-    	
-    	// grab third
-    	addSequential(new TurnToAngleGyro(0), 1.5); //TODO reduce timeout?
-    	addParallel(new SetElevatorPosition(220000, 5));
-    	addParallel(new GrabCube(), 3);
-    	addParallel(new IntakeUntilDetected(), 3);
-    	addSequential(new DriveStraightUntilDetected(40, 0.5), 1);
-    	addSequential(new DriveStraightUntilDetected(10, 0.3), 0.5);
+//    	// place second cube
+//    	addSequential(new SetIntakePower(-0.5), 0.5);
+//    	
+//    	// line up for third
+//    	addSequential(new DriveAngle(-30, 0, -0.4), 1);
+//    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.5));
+//    	addSequential(new DriveStraightRamp(-30, -0.4, -1, -30));
+//    	addSequential(new DriveStraightRamp(-45, -1, -0.2, -30));
+//    	
+//    	// grab third
+//    	addSequential(new TurnToAngleGyro(0), 1.5); //TODO reduce timeout?
+//    	addParallel(new SetElevatorPosition(220000, 5));
+//    	addParallel(new GrabCube(), 3);
+//    	addParallel(new IntakeUntilDetected(), 3);
+//    	addSequential(new DriveStraightUntilDetected(40, 0.5), 1);
+//    	addSequential(new DriveStraightUntilDetected(10, 0.3), 0.5);
     }
 }
