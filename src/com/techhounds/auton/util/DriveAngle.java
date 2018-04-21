@@ -28,7 +28,6 @@ public class DriveAngle extends Command {
     }
 
     protected void initialize() {
-    	Robot.gyro.reset();
     	initial = Robot.gyro.getRotation();
     }
 
