@@ -32,16 +32,16 @@ public class CenterLeftSwitch extends CommandGroup {
     	addSequential(new DriveStraightRamp(30, 0.4, 1, -35));
     	addSequential(new DriveStraight(15, 1, -35));
     	addSequential(new DriveStraightRamp(50, 1, 0.2, -35));
-    	addSequential(new TurnToAngleGyro(-10), 0.5);
+    	addSequential(new TurnToAngleGyro(-10), 0.5); //
     	
     	// eject cube
     	addSequential(new SetIntakePower(-0.5), 0.5);
     	
     	// back up to starting position
-    	addSequential(new DriveAngle(-30, 0, -0.4), 1);
+    	addSequential(new DriveAngle(-35, 0, -0.4), 1);
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.5));
-    	addSequential(new DriveStraightRamp(30, -0.4, -1, -30));
-    	addSequential(new DriveStraightRamp(45, -1, -0.2, -30));
+    	addSequential(new DriveStraightRamp(-30, -0.4, -1, -30));
+    	addSequential(new DriveStraightRamp(-45, -1, -0.2, -30));
     	
     	// grab another one
     	addSequential(new TurnToAngleGyro(0), 1.5); //TODO reduce timeout?
@@ -62,8 +62,8 @@ public class CenterLeftSwitch extends CommandGroup {
     	// line up for third
     	addSequential(new DriveAngle(-30, 0, -0.4), 1);
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.5));
-    	addSequential(new DriveStraightRamp(30, -0.4, -1, -30));
-    	addSequential(new DriveStraightRamp(45, -1, -0.2, -30));
+    	addSequential(new DriveStraightRamp(-30, -0.4, -1, -30));
+    	addSequential(new DriveStraightRamp(-45, -1, -0.2, -30));
     	
     	// grab third
     	addSequential(new TurnToAngleGyro(0), 1.5); //TODO reduce timeout?
