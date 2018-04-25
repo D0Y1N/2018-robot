@@ -58,7 +58,7 @@ public class Tilt extends Subsystem implements DashboardUpdatable {
 	}
 	
 	public void setPower(double power) {
-		tiltMotor.set(ControlMode.PercentOutput, power);
+		tiltMotor.set(ControlMode.PercentOutput, RobotUtilities.constrain(power));
 	}
 	
 	public double getPosition() {
