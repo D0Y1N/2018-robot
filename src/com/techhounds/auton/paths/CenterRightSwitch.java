@@ -15,7 +15,6 @@ import com.techhounds.tilt.SetTiltPosition;
 import com.techhounds.tilt.Tilt;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -30,7 +29,7 @@ public class CenterRightSwitch extends CommandGroup {
     	// drive up to switch
     	addSequential(new DriveAngle(26, 0, 0.4), 1);
     	addSequential(new DriveStraight(65, 0.6, 26), 3);
-    	addSequential(new DriveStraight(30, 0.4, 26), 1);
+    	addSequential(new DriveStraight(35, 0.4, 26), 1);
     	addSequential(new TurnToAngleGyro(10), 0.5);
     	
     	// eject cube
@@ -59,7 +58,7 @@ public class CenterRightSwitch extends CommandGroup {
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.SWITCH), 0.5));
     	addSequential(new DriveStraight(40, 0.5), 2);
     	addSequential(new TurnToAngleGyro(10), 1);
-    	addSequential(new DriveStraight(12, 0.4), 1);
+    	addSequential(new DriveStraight(20, 0.4), 1);
     	
     	addSequential(new SetIntakePower(-0.5), 0.5);
     	
