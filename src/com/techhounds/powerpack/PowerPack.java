@@ -37,7 +37,7 @@ public class PowerPack extends Subsystem implements DashboardUpdatable {
 	public static final double ELEVATOR_RAMP = 0.25;
 	
 	public static final double PEAK_CLIMBER_FWD = 1.0;
-	public static final double PEAK_CLIMBER_REV = -0.5;
+	public static final double PEAK_CLIMBER_REV = -1.0;
 	public static final boolean DEBUG = false;
 	
 	private boolean overrideLimits = true;
