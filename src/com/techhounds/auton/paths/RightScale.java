@@ -27,10 +27,9 @@ public class RightScale extends CommandGroup {
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.SCALE), 1.5)); //wait a little longer?
 
     	// drive up & curve
-    	addSequential(new DriveStraightRamp(40, 0.3, 1));
-//    	addSequential(new DriveStraight(50, 1));
-    	addSequential(new DriveStraight(120, 1, -10), 4);
-    	addSequential(new DriveStraightRamp(110, 1, 0));
+    	addSequential(new DriveStraightRamp(40, 0.4, 1));
+    	addSequential(new DriveStraight(130, 1, -10), 4);
+    	addSequential(new DriveStraightRamp(100, 1, 0.2));
     	
     	// eject the cube
     	addParallel(new SetTiltPosition(TiltPosition.MIDDLE));
@@ -42,43 +41,28 @@ public class RightScale extends CommandGroup {
     	addSequential(new TurnToAngleGyro(-170), 2);
     	
     	// grab second cube
-    	addSequential(new DriveStraight(25, 0.30), 3);
+    	addSequential(new DriveStraight(25, 0.45), 3);
     	addSequential(new CollectCube(25), 2);
-//    	
+    	
 //		// retry collection
 //		addSequential(new CollectCubeRetryConditional());
 //		addSequential(new CollectCubeRetryConditional());
 //		addSequential(new CollectCubeRetryConditional());
 //
+    	// place second cube
     	addSequential(new TurnToAngleGyro(-167), 1);
     	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE)); //wait a little longer?
     	addSequential(new DriveStraight(-50, -0.35), 2);
     	addSequential(new TurnToAngleGyro(-15, 2, 0.28)); //lower rotation power here?
-    	
     	addSequential(new SetIntakePower(-0.5), 0.5);
     	
-//    	// drive back to scale
-//    	addSequential(new TurnToAngleGyro(135), 1);
-//    	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE));
-//    	addSequential(new DriveStraight(-60, -0.4), 3);
-//    	addSequential(new TurnToAngleGyro(30), 1);
-//    	
-//    	// place in scale
-//    	addParallel(new SetTiltPosition(Tilt.POS_MID));
-//    	addSequential(new SetIntakePower(-0.5), 0.5);
-//    	
-//    	// back off and reset
-//    	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
-//    	addSequential(new TurnToAngleGyro(140), 2);
-//    	addParallel(new SetElevatorPosition(ElevatorPosition.COLLECT));
-//    	
-//    	// grab third cube
-//    	addSequential(new DriveArc(80, 60, 0.4, 0.6), 2);
-//    	addSequential(new CollectCube(25), 3);
-//    	
-//		// retry collection
-//		addSequential(new CollectCubeRetryConditional());
-//		addSequential(new CollectCubeRetryConditional());
-//		addSequential(new CollectCubeRetryConditional());
+    	// back off and reset
+    	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
+    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.75));
+    	addSequential(new TurnToAngleGyro(-158), 2);
+    	
+    	// grab third cube
+    	addSequential(new DriveStraight(25, 0.45), 3);
+    	addSequential(new CollectCube(25), 2);
     }
 }
