@@ -58,7 +58,7 @@ public class CenterRightSwitch extends CommandGroup {
     	addSequential(new TurnToAngleGyro(70), 1);
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.SWITCH), 0.5));
     	addSequential(new DriveStraight(40, 0.5), 2);
-    	addSequential(new TurnToAngleGyro(0), 1);
+    	addSequential(new TurnToAngleGyro(10), 1);
     	addSequential(new DriveStraight(12, 0.4), 1);
     	
     	addSequential(new SetIntakePower(-0.5), 0.5);
