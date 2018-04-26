@@ -35,8 +35,8 @@ public class LeftScaleCross extends CommandGroup {
     	
     	addSequential(new DriveStraightRamp(45, 0.6, 1, -90));
     	addSequential(new DriveStraightRamp(45, 1, 0.5, -90));
-    	addSequential(new DriveStraightRamp(50, 0.5, 1, -90));
-    	addSequential(new DriveStraightRamp(50, 1, 0.3, -90));
+    	addSequential(new DriveStraightRamp(55, 0.5, 1, -90));
+    	addSequential(new DriveStraightRamp(55, 1, 0.3, -90));
     	
     	// put in scale
     	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE));

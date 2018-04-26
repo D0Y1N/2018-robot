@@ -29,12 +29,12 @@ public class RightScale extends CommandGroup {
     	// drive up & curve
     	addSequential(new DriveStraightRamp(40, 0.3, 1));
 //    	addSequential(new DriveStraight(50, 1));
-    	addSequential(new DriveStraight(150, 1, -12), 4);
-    	addSequential(new DriveStraightRamp(80, 1, 0));
+    	addSequential(new DriveStraight(120, 1, -10), 4);
+    	addSequential(new DriveStraightRamp(110, 1, 0));
     	
     	// eject the cube
     	addParallel(new SetTiltPosition(TiltPosition.MIDDLE));
-    	addSequential(new SetIntakePower(-0.4), 0.5);
+    	addSequential(new SetIntakePower(-0.55), 0.5);
     	
     	// back off and reset
     	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
