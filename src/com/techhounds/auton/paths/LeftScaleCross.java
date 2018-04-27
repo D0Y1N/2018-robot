@@ -47,7 +47,7 @@ public class LeftScaleCross extends CommandGroup {
     	addParallel(new SetTiltPosition(TiltPosition.DOWN));
     	addSequential(new TurnToAngleGyro(166.5), 1.5);
     	addParallel(new SetElevatorPosition(ElevatorPosition.COLLECT));
-    	addSequential(new DriveStraight(20, 0.45, 166.5), 3);
+    	addSequential(new DriveStraight(20, 0.40, 166.5), 3);
     	addSequential(new CollectCube(35));
     	
     	// place second
