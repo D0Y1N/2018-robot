@@ -21,6 +21,6 @@ public class RightCross extends CommandGroup {
     	addSequential(new DriveStraight(18, 0.4), 2);
     	addSequential(new TurnToAngleGyro(85), 3);
     	addParallel(new DelayedCommand(new SetTiltPosition(Tilt.POS_MID), 4));
-    	addSequential(new DriveStraight(120, 0.6), 8);
+    	addSequential(new DriveStraight(100, 0.6), 8);
     }
 }
