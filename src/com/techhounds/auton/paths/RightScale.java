@@ -24,16 +24,17 @@ public class RightScale extends CommandGroup {
     	
        	// Set tilt/elevator
     	addParallel(new SetTiltPosition(TiltPosition.DOWN));    	
-    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.SCALE), 1.5)); //wait a little longer?
+    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.SCALE), 1.5)); // TODO wait
 
     	// drive up & curve
-    	addSequential(new DriveStraightRamp(40, 0.4, 1));
-    	addSequential(new DriveStraight(130, 1, -10), 4);
-    	addSequential(new DriveStraightRamp(100, 1, 0.2));
+    	addSequential(new DriveStraightRamp(25, 0.5, 1)); // TODO faster
+    	addSequential(new DriveStraight(15, 1));
+    	addSequential(new DriveStraight(150, 1, -10), 4);
+    	addSequential(new DriveStraightRamp(80, 1, 0.3)); // TODO faster
     	
     	// eject the cube
     	addParallel(new SetTiltPosition(TiltPosition.MIDDLE));
-    	addSequential(new SetIntakePower(-0.55), 0.5);
+    	addSequential(new SetIntakePower(-0.50), 0.5);
     	
     	// back off and reset
     	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
@@ -50,11 +51,11 @@ public class RightScale extends CommandGroup {
 //		addSequential(new CollectCubeRetryConditional());
 //
     	// place second cube
-    	addSequential(new TurnToAngleGyro(-167), 1);
-    	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE)); //wait a little longer?
-    	addSequential(new DriveStraight(-50, -0.35), 2);
-    	addSequential(new TurnToAngleGyro(-15, 2, 0.28)); //lower rotation power here?
-    	addSequential(new SetIntakePower(-0.5), 0.5);
+    	addSequential(new TurnToAngleGyro(-167), 1); // TODO lower timeout
+    	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE));
+    	addSequential(new DriveStraight(-50, -0.45), 2); // TODO faster
+    	addSequential(new TurnToAngleGyro(-20, 1.5, 0.35)); // FIXME
+    	addSequential(new SetIntakePower(-0.45), 0.5);
     	
     	// back off and reset
     	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
@@ -62,7 +63,7 @@ public class RightScale extends CommandGroup {
     	addSequential(new TurnToAngleGyro(-158), 2);
     	
     	// grab third cube
-    	addSequential(new DriveStraight(25, 0.45), 3);
-    	addSequential(new CollectCube(25), 2);
+    	addSequential(new DriveStraight(35, 0.45), 3); // FIXME
+    	addSequential(new CollectCube(35), 2); // FIXME
     }
 }
