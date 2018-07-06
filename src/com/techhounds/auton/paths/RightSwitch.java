@@ -21,9 +21,10 @@ public class RightSwitch extends CommandGroup {
     	addParallel(new SetTiltPosition(TiltPosition.DOWN));
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.SWITCH), 1));
     	
-    	// drive up
-    	addSequential(new DriveStraight(140, 0.75), 4);
-    	addSequential(new TurnByAngleGyro(-90), 2);
+//    	// drive up
+    	addSequential(new DriveStraight(110, 0.75), 4);
+    	addSequential(new DriveStraight(30, 0.4), 4);
+    	addSequential(new DelayedCommand(new TurnByAngleGyro(-90), .7), 2);
     	addSequential(new DriveStraight(20, 0.5), 2);
     	
     	// eject cube
