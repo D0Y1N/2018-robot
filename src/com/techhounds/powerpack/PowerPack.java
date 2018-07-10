@@ -24,7 +24,7 @@ public class PowerPack extends Subsystem implements DashboardUpdatable {
 	private Solenoid climberEngage;
 	private Solenoid brakeDisengage;
 
-	private WPI_TalonSRX winchPrimary;
+	public WPI_TalonSRX winchPrimary; 
 	private WPI_TalonSRX winchSecondary;
 	private WPI_TalonSRX winchTertiary;
 	private WPI_TalonSRX winchQuaternary;

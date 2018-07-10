@@ -37,6 +37,7 @@ public class SetElevatorPosition extends TimedCommand {
     }
 
     protected void initialize() {
+    	System.out.println("initialized");
     	Robot.powerPack.setElevatorPosition(setpoint);
     }
 
@@ -49,10 +50,12 @@ public class SetElevatorPosition extends TimedCommand {
     }
 
     protected void end() {
+    	System.out.println("ended");
     	Robot.powerPack.setBrake();
     }
 
     protected void interrupted() {
+    	System.out.println("interupted");
     	end();
     }
 }

@@ -1,8 +1,12 @@
 package com.techhounds.auton.paths;
 
+import com.techhounds.auton.util.DelayedCommand;
 import com.techhounds.auton.util.DriveArc;
 import com.techhounds.auton.util.DriveStraight;
 import com.techhounds.auton.util.DriveStraightRamp;
+import com.techhounds.intake.SetIntakePower;
+import com.techhounds.powerpack.SetElevatorPosition;
+import com.techhounds.powerpack.SetElevatorPosition.ElevatorPosition;
 import com.techhounds.tilt.SetTiltPosition;
 import com.techhounds.tilt.SetTiltPosition.TiltPosition;
 
@@ -18,17 +22,16 @@ public class LeftScale extends CommandGroup {
     	    	
        	// Set tilt/elevator
     	addParallel(new SetTiltPosition(TiltPosition.DOWN));    	
-//    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.SCALE), 1.5));
 
     	// drive up & curve
     	addSequential(new DriveStraightRamp(40, 0.4, 1));
-    	addSequential(new DriveArc(80, 90, 0.9, 1));
+    	addSequential(new DriveArc(80, 85, 0.9, 1));
     	addSequential(new DriveStraight(40, 1));
-    	addSequential(new DriveStraightRamp(100, 1, 0));
+    	addSequential(new DriveStraightRamp(70, 1, 0));
+    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.SCALE), 2));
     	
     	// eject the cube
-//    	addParallel(new SetTiltPosition(TiltPosition.MIDDLE));
-//    	addSequential(new SetIntakePower(-0.4), 0.5);
+    	addSequential(new SetIntakePower(-0.4), 0.5);
 //    	
 //    	// back off and reset
 //    	addParallel(new SetTiltPosition(Tilt.POS_DOWN));

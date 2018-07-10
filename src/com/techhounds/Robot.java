@@ -110,6 +110,19 @@ public class Robot extends TimedRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		Dashboard.updateDashboard();
+		
+		if (powerPack != null) {
+			boolean rev = powerPack.winchPrimary.getSensorCollection().isRevLimitSwitchClosed();
+			boolean fwd = powerPack.winchPrimary.getSensorCollection().isFwdLimitSwitchClosed();
+			
+			if (rev) {
+				//System.out.println("Rev limit switch hit!");
+			}
+
+			if (fwd) {
+				System.out.println("Fwd limit switch hit!");
+			}
+		}
 	}
 
 	@Override

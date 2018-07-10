@@ -28,28 +28,28 @@ public class RightScale extends CommandGroup {
 
     	// drive up & curve
     	addSequential(new DriveStraightRamp(25, 0.5, 1)); // TODO faster
-    	addSequential(new DriveStraight(15, 1));
-    	addSequential(new DriveStraight(150, 1, -10), 4);
-    	addSequential(new DriveStraightRamp(80, 1, 0.3)); // TODO faster
+    	addSequential(new DriveStraight(50, 1));
+    	addSequential(new DriveStraight(75, 1, -16), 4);
+    	addSequential(new DriveStraightRamp(100, 1, 0.3)); // TODO faster
     	
-    	// eject the cube
+//    	// eject the cube
     	addParallel(new SetTiltPosition(TiltPosition.MIDDLE));
-    	addSequential(new SetIntakePower(-0.50), 0.5);
-    	
-    	// back off and reset
+    	addSequential(new SetIntakePower(-0.35), 0.5);
+////    	
+//    	// back off and reset
     	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.75));
-    	addSequential(new TurnToAngleGyro(-170), 2);
-    	
-    	// grab second cube
+    	addSequential(new TurnToAngleGyro(-175, 3, 0.35), 2);
+//    	
+////    	// grab second cube
     	addSequential(new DriveStraight(25, 0.45), 3);
     	addSequential(new CollectCube(25), 2);
-    	
-//		// retry collection
-//		addSequential(new CollectCubeRetryConditional());
-//		addSequential(new CollectCubeRetryConditional());
-//		addSequential(new CollectCubeRetryConditional());
-//
+//////    	
+//////		// retry collection
+//////		addSequential(new CollectCubeRetryConditional());
+//////		addSequential(new CollectCubeRetryConditional());
+//////		addSequential(new CollectCubeRetryConditional());
+//////
     	// place second cube
     	addSequential(new TurnToAngleGyro(-167), 1); // TODO lower timeout
     	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE));
@@ -60,7 +60,7 @@ public class RightScale extends CommandGroup {
     	// back off and reset
     	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.75));
-    	addSequential(new TurnToAngleGyro(-158), 2);
+    	addSequential(new TurnToAngleGyro(-165, 3, .35), 2);
     	
     	// grab third cube
     	addSequential(new DriveStraight(35, 0.45), 3); // FIXME

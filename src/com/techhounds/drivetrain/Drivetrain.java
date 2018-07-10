@@ -34,7 +34,7 @@ public class Drivetrain extends Subsystem implements DashboardUpdatable {
 
 	public static final double MAX_DRIVE_SPEED = 0.75;
 	public static final double MIN_DRIVE_SPEED = 0.3; // TODO: set deadband?
-	public static final double COUNTS_PER_INCH = 422;
+	public static final double COUNTS_PER_INCH = 123319.5/290;
 //	public static final double COUNTS_PER_INCH = 437; //4096 / Math.PI * 6;
 	public static final boolean DEBUG = false;
 
