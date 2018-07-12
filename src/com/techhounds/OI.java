@@ -138,6 +138,7 @@ public class OI {
 
 		Button bY = new JoystickButton(operator, 4);
 		// Set elevator to SCALE position
+		bY.whenPressed(new SetTiltPosition(Tilt.POS_DOWN));
 		bY.whenPressed(new SetElevatorPosition(ElevatorPosition.SCALE));
 
 		Button LB = new JoystickButton(operator, 5);
