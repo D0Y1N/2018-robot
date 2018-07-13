@@ -39,7 +39,7 @@ public class RightScale extends CommandGroup {
 //    	// back off and reset
     	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.75));
-    	addSequential(new TurnToAngleGyro(-175, 3, 0.35), 2);
+    	addSequential(new TurnToAngleGyro(-160, 3, 0.35), 2);
 //    	
 ////    	// grab second cube
     	addSequential(new DriveStraight(25, 0.45), 3);
@@ -53,7 +53,7 @@ public class RightScale extends CommandGroup {
     	// place second cube
     	addSequential(new TurnToAngleGyro(-167), 1); // TODO lower timeout
     	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE));
-    	addSequential(new DriveStraight(-50, -0.45), 2); // TODO faster
+    	addSequential(new DriveStraight(-50, -0.4), 2); // TODO faster
     	addSequential(new TurnToAngleGyro(-23, 1.5, 0.3)); // FIXME
     	addSequential(new SetIntakePower(-0.45), 0.5);
     	
