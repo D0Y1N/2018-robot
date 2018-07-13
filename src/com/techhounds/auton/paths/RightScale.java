@@ -54,13 +54,13 @@ public class RightScale extends CommandGroup {
     	addSequential(new TurnToAngleGyro(-167), 1); // TODO lower timeout
     	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE));
     	addSequential(new DriveStraight(-50, -0.45), 2); // TODO faster
-    	addSequential(new TurnToAngleGyro(-20, 1.5, 0.3)); // FIXME
+    	addSequential(new TurnToAngleGyro(-23, 1.5, 0.3)); // FIXME
     	addSequential(new SetIntakePower(-0.45), 0.5);
     	
     	// back off and reset
     	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
     	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.75));
-    	addSequential(new TurnToAngleGyro(-155, 3, .35), 2);
+    	addSequential(new TurnToAngleGyro(-150, 3, .3), 2);
     	
     	// grab third cube
     	addSequential(new DriveStraight(35, 0.45), 3); // FIXME
