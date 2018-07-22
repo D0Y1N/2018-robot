@@ -89,7 +89,7 @@ public class PowerPack extends Subsystem implements DashboardUpdatable {
 		// TODO use constants for these
 		talon.config_kP(0, 0.01/2.5, RobotUtilities.CONFIG_TIMEOUT);
 		talon.config_kI(0, 0, RobotUtilities.CONFIG_TIMEOUT);
-		talon.config_kD(0, 0.25, RobotUtilities.CONFIG_TIMEOUT);
+		talon.config_kD(0, 0.1, RobotUtilities.CONFIG_TIMEOUT);
 		talon.config_kF(0, 0, RobotUtilities.CONFIG_TIMEOUT);
 		talon.configAllowableClosedloopError(0, PID_TOLERANCE, RobotUtilities.CONFIG_TIMEOUT);
 		talon.configClosedloopRamp(ELEVATOR_RAMP, RobotUtilities.CONFIG_TIMEOUT);
