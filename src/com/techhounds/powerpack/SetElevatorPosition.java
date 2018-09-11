@@ -12,7 +12,7 @@ public class SetElevatorPosition extends TimedCommand {
 	public enum ElevatorPosition {
 		COLLECT(-25000),
 		SWITCH(300000),
-		SCALE(700000);
+		SCALE(650000);
 		
 		public final double setpoint;
 		private ElevatorPosition(double value) {
