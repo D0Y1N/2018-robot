@@ -24,6 +24,7 @@ public class SetTiltPosition extends Command {
 
 	public SetTiltPosition(TiltPosition position) {
 		this(position.setpoint);
+		System.out.println("craeted");
 	}
 
 	public SetTiltPosition(double setpoint) {
@@ -31,12 +32,16 @@ public class SetTiltPosition extends Command {
 		requires(Robot.tilt);
 	}
 
-	protected void initialize() {}
+	protected void initialize() {
+		System.out.println("initialized");
+	}
 
 	protected void execute() {
 		double position = Robot.tilt.getPosition();
 		double error = setpoint - position;
 		double power = 0;
+		
+		System.out.println(position + " " + setpoint + " " + error);
 
 		if (setpoint > Tilt.POS_DOWN + 20) { // going up
 			if (error > 25) {

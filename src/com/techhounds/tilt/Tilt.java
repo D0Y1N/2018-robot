@@ -15,9 +15,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Tilt extends Subsystem implements DashboardUpdatable {
 	
-	public static final double POS_UP = 920; 
-	public static final double POS_MID = 890;
-	public static final double POS_DOWN = 850;
+	public static final double POS_UP = 894; 
+	public static final double POS_MID = 865;
+	public static final double POS_DOWN = 826;
 	
 //	public static final double POS_UP = 650; 
 //	public static final double POS_MID = 550;
@@ -62,7 +62,7 @@ public class Tilt extends Subsystem implements DashboardUpdatable {
 	}
 	
 	public double getPosition() {
-		return Math.floorMod(-tiltMotor.getSelectedSensorPosition(0), 1023);
+		return Math.floorMod(tiltMotor.getSelectedSensorPosition(0), 1023);
 	}
 
 	@Override

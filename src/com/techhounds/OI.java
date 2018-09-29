@@ -29,6 +29,7 @@ import com.techhounds.powerpack.SetElevatorPosition;
 import com.techhounds.powerpack.SetElevatorPosition.ElevatorPosition;
 import com.techhounds.tilt.SetTiltPosition;
 import com.techhounds.tilt.SetTiltPosition.TiltPosition;
+import com.techhounds.tilt.SetTiltPower;
 import com.techhounds.tilt.Tilt;
 
 import edu.wpi.first.wpilibj.GenericHID;
@@ -39,6 +40,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -69,6 +71,8 @@ public class OI {
 		Button bA = new JoystickButton(driver, 1);
 		// lower hook
 		bA.whenPressed(new SetHookPosition(false));
+		
+//		bA.whenPressed(new SetTiltPower(0.5));
 		
 		Button bB = new JoystickButton(driver, 2);
 		// jiggle hook
@@ -152,6 +156,7 @@ public class OI {
 		Button arrowUp = getPOVButton(operator, 0);
 		// Set Tilt to UP
 		arrowUp.whenPressed(new SetTiltPosition(TiltPosition.UP));
+		
 
 		Button arrowRight = getPOVButton(operator, 90);
 		// Set Tilt to MIDDLE
